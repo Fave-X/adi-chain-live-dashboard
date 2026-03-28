@@ -343,9 +343,10 @@ export const filterByPeriod = (data, period) => {
   
   switch (period) {
     case '24H':
-      // For 24H, show last 2 entries to avoid single-point charts
-      const last2 = sorted.slice(-2)
-      return last2.length < 2 ? sorted.slice(-7) : last2
+      // For 24H, show all hourly data points from last 24 hours
+      const now = new Date()
+      const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000)
+      return sorted.filter(d => new Date(d.date) >= twentyFourHoursAgo)
     case '7D':
       return sorted.slice(-7)
     case '30D':
