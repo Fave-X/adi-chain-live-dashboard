@@ -104,7 +104,21 @@ const fetchWithRetry = async (url, options = {}, service = 'default') => {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
       
-      const data = await response.json()
+      // Handle different response formats
+      let data
+      const contentType = response.headers.get('content-type')
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json()
+      } else {
+        // Handle non-JSON responses
+        const text = await response.text()
+        try {
+          data = JSON.parse(text)
+        } catch (parseError) {
+          throw new Error(`Invalid JSON response: ${text}`)
+        }
+      }
+      
       recordSuccess(service)
       return data
       
