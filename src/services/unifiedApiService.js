@@ -119,6 +119,11 @@ const fetchWithRetry = async (url, options = {}, service = 'default') => {
         }
       }
       
+      // Validate data structure before returning
+      if (!data || typeof data !== 'object') {
+        throw new Error('Invalid response format: expected object')
+      }
+      
       recordSuccess(service)
       return data
       

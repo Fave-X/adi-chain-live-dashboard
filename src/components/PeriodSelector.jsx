@@ -16,13 +16,12 @@ const PeriodSelector = memo(() => {
 
   return (
     <div style={{ 
-      display: 'grid', 
-      gridTemplateColumns: 'repeat(4, 1fr)', 
-      alignItems: 'center', 
+      display: 'flex', 
+      flexWrap: 'wrap',
+      justifyContent: 'flex-end',
       gap: '8px',
       marginBottom: '8px',
-      width: '100%',
-      maxWidth: '600px'
+      width: '100%'
     }}>
       {PERIOD_OPTIONS.map((period) => (
         <button
