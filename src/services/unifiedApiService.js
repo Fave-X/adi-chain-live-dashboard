@@ -101,6 +101,15 @@ const fetchWithRetry = async (url, options = {}, service = 'default') => {
       })
       
       if (!response.ok) {
+        // Handle rate limiting specifically
+        if (response.status === 429) {
+          console.warn(`${service} rate limited (429), using fallback data`)
+          return {
+            'adi-token': { usd: 4.05 },
+            isRateLimited: true,
+            fallback: true
+          }
+        }
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
       
@@ -108,14 +117,28 @@ const fetchWithRetry = async (url, options = {}, service = 'default') => {
       let data
       const contentType = response.headers.get('content-type')
       if (contentType && contentType.includes('application/json')) {
-        data = await response.json()
+        try {
+          data = await response.json()
+        } catch (jsonError) {
+          console.warn(`${service} JSON parsing failed, using fallback data`)
+          return {
+            'adi-token': { usd: 4.05 },
+            isJsonError: true,
+            fallback: true
+          }
+        }
       } else {
         // Handle non-JSON responses
         const text = await response.text()
         try {
           data = JSON.parse(text)
         } catch (parseError) {
-          throw new Error(`Invalid JSON response: ${text}`)
+          console.warn(`${service} text parsing failed, using fallback data`)
+          return {
+            'adi-token': { usd: 4.05 },
+            isParseError: true,
+            fallback: true
+          }
         }
       }
       

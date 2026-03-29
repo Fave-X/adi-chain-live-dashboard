@@ -4,6 +4,11 @@ import { memo } from 'react'
 // Fixed period options - exactly as specified in correct order
 const PERIOD_OPTIONS = ['24H', '7D', '30D', 'ALL']
 
+// Explicitly verify ALL is included
+if (!PERIOD_OPTIONS.includes('ALL')) {
+  console.error('ALL period option is missing from PERIOD_OPTIONS array')
+}
+
 const PeriodSelector = memo(() => {
   const { state, actions } = useData()
 
@@ -20,9 +25,10 @@ const PeriodSelector = memo(() => {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'flex-end',
-      gap: '4px',
+      gap: '8px',
       marginBottom: '8px',
-      width: '100%'
+      width: '100%',
+      minHeight: '40px' // Ensure container has height
     }}>
       {PERIOD_OPTIONS.map((period) => (
         <button
