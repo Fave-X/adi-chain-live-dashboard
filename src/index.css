@@ -71,3 +71,9 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/* Tab button accessibility styles */
+.tab-button:focus-visible {
+  outline: 3px solid #e8b84b;
+  outline-offset: 2px;
+}

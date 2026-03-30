@@ -9,8 +9,10 @@ const KeyMetricsBar = () => {
 
   // Get latest address count from unified state
   const latestAddressCount = state.blockscout.addresses.length > 0
-    ? state.blockscout.addresses[state.blockscout.addresses.length - 1].value
-    : 0
+  ? [...state.blockscout.addresses]
+      .sort((a, b) => new Date(a.date) - new Date(b.date))
+      .slice(-1)[0].value
+  : 0
 
   // Format functions
   const formatLargeNumber = (num) => {
