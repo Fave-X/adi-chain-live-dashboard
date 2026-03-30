@@ -2,7 +2,7 @@ import { useData } from '../contexts/DataContext'
 import { memo } from 'react'
 
 // Fixed period options - exactly as specified in correct order
-const PERIOD_OPTIONS = ['24H', '7D', '30D', 'MAX']
+const PERIOD_OPTIONS = ['24H', '7D', '30D', 'ALL']
 
 // Explicitly verify ALL is included
 if (!PERIOD_OPTIONS.includes('ALL')) {
@@ -25,17 +25,18 @@ const PeriodSelector = memo(() => {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'flex-end',
-      gap: '8px',
+      gap: '6px',
       marginBottom: '8px',
       width: '100%',
-      minHeight: '40px' // Ensure container has height
+      minHeight: '50px',
+      alignItems: 'center'
     }}>
       {PERIOD_OPTIONS.map((period) => (
         <button
           key={period}
           onClick={() => handlePeriodChange(period)}
           style={{
-            padding: '6px 12px',
+            padding: '8px 16px',
             borderRadius: '6px',
             border: state.selectedPeriod === period 
               ? '1px solid #e8b84b' 
@@ -56,7 +57,9 @@ const PeriodSelector = memo(() => {
             outline: 'none',
             boxShadow: state.selectedPeriod === period 
               ? '0 2px 8px rgba(232, 184, 75, 0.2)' 
-              : 'none'
+              : 'none',
+            minWidth: '60px',
+            flexShrink: 0
           }}
           onMouseEnter={(e) => {
             if (state.selectedPeriod !== period) {

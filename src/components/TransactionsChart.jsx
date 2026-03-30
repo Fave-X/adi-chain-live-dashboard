@@ -116,18 +116,13 @@ const TransactionsChart = () => {
     },
   }
 
-  // Show stat card for 24H if insufficient data points for meaningful chart
-  if (!state.blockscout.loading && !state.blockscout.error && state.selectedPeriod === '24H' && chartData.length <= 1) {
-    const todayValue = chartData[0]?.value ?? 0
-    const todayDate = chartData[0]?.date
-      ? new Date(chartData[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-      : 'Today'
-    
+  // Show stat card for 24H only if no data available
+  if (!state.blockscout.loading && !state.blockscout.error && state.selectedPeriod === '24H' && chartData.length === 0) {
     return (
       <div style={{ height: '256px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#111827', borderRadius: '8px', padding: '24px' }}>
-        <div style={{ color: '#7a8fad', fontSize: '12px', marginBottom: '8px', fontFamily: 'Inter, sans-serif' }}>{todayDate}</div>
+        <div style={{ color: '#7a8fad', fontSize: '12px', marginBottom: '8px', fontFamily: 'Inter, sans-serif' }}>No 24H Data</div>
         <div style={{ color: '#2dd4bf', fontSize: '48px', fontWeight: 'bold', fontFamily: 'DM Mono, monospace', marginBottom: '8px' }}>
-          {todayValue.toLocaleString()}
+          0
         </div>
         <div style={{ color: '#7a8fad', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>transactions today</div>
       </div>
