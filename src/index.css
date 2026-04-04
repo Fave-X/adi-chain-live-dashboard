@@ -74,7 +74,6 @@ body {
 
 /* Tab button accessibility styles */
 .tab-button:focus-visible {
-  box-shadow: 0 0 0 3px rgba(232, 184, 75, 0.5);
-  outline: 2px solid #e8b84b;
+  outline: 3px solid #e8b84b;
   outline-offset: 2px;
 }
