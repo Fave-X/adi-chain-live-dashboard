@@ -38,7 +38,7 @@ A professional, Bloomberg Terminal-inspired live analytics dashboard for ADI Cha
 
 ```bash
 # Clone the repository
-git clone https://github.com/Fave-X/adi-dashboard.git
+git clone https://github.com/Fave-X/adi-chain-live-dashboard.git
 cd adi-dashboard
 
 # Install dependencies
