@@ -1,23 +1,32 @@
-# ADI Chain Analytics Dashboard
+# ADI Chain Analytics Live Dashboard
 
-A professional, Bloomberg Terminal-inspired live analytics dashboard for ADI Chain, built with React, Vite, and Tailwind CSS.
+A professional, Bloomberg Terminal-inspired **live analytics dashboard** for ADI Chain, built with React, Vite, and Tailwind CSS.
+
+**Live Demo:** [https://adi-dashboard-sandy.vercel.app](https://adi-dashboard-sandy.vercel.app)
 
 ## Features
 
-- **Real-time Data**: Auto-refreshes every 30 seconds from multiple data sources
-- **Professional UI**: Dark, institutional design optimized for financial data
+- **Real-time Data**: Auto-refreshes every 30 seconds from multiple sources
+- **Professional UI**: Dark, institutional-grade design optimized for financial and on-chain data
 - **Four Comprehensive Tabs**:
-  - **Overview**: Key metrics, price charts, transaction data, and performance table
-  - **By Metric**: Detailed analysis of 15+ network metrics with sparklines
-  - **All Data**: Sortable table with complete dataset
-  - **Insights**: Network analysis and ecosystem partner information
+  - **Overview**: Key metrics, interactive price charts, transaction data, and performance table
+  - **By Metric**: Detailed analysis of 15+ network metrics with sparklines and trend signals
+  - **All Data**: Fully sortable table with the complete dataset
+  - **Insights**: Network analysis, technical specifications, and ecosystem partner information
+
+## What it Tracks
+
+- ADI token price, market cap, and 24h volume (via CoinGecko)
+- Transaction counts and network activity
+- Active & cumulative unique addresses
+- Real-time block, gas, and custom on-chain metrics
 
 ## Data Sources
 
-- **CoinGecko**: Price, market cap, volume, and supply data
-- **ADI Explorer**: Transaction and address statistics  
-- **ADI RPC**: Real-time block and gas data
-- **Calculated Metrics**: Velocity ratios, momentum indicators, and growth rates
+- **CoinGecko** — Price, market cap, volume, and supply data
+- **ADI Explorer (Blockscout)** — Transaction and address statistics
+- **ADI RPC** — Real-time block and gas data
+- **Calculated Metrics** — Velocity ratios, momentum indicators, growth rates, and trend signals
 
 ## Tech Stack
 
@@ -31,7 +40,7 @@ A professional, Bloomberg Terminal-inspired live analytics dashboard for ADI Cha
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
@@ -39,7 +48,9 @@ A professional, Bloomberg Terminal-inspired live analytics dashboard for ADI Cha
 ```bash
 # Clone the repository
 git clone https://github.com/Fave-X/adi-chain-live-dashboard.git
-cd adi-dashboard
+
+# Navigate into the project directory
+cd adi-chain-live-dashboard
 
 # Install dependencies
 npm install
@@ -120,7 +131,7 @@ The dashboard connects to:
 
 ### Overview Tab
 - 6 key stat cards with trend indicators
-- Interactive price history chart (30D/90D/ALL)
+- Interactive price history chart (24H/7D/30D)
 - Daily transaction volume chart
 - Cumulative unique addresses growth
 - Comprehensive performance metrics table
@@ -137,18 +148,14 @@ The dashboard connects to:
 - Complete dataset with trend indicators
 - Source badges for transparency
 
-### Insights Tab
-- Network analysis with BULLISH/NEUTRAL/BEARISH signals
-- ADI Chain technical specifications
-- Ecosystem partner status and information
-- Explanatory analysis for each metric
-
 ## Performance
 
 - **Caching**: 30-second API response caching
 - **Optimized Rendering**: React 19 with minimal re-renders
 - **Responsive**: Mobile-first design with desktop optimization
 - **Error Handling**: Graceful fallbacks for API failures
+
+Built by Tabugbo Chiagoziem Favour, a Laboratory Analyst turned on-chain data analyst.  This dashboard was created as a community resource for the ADI Chain ecosystem and as a practical showcase of Web3 analytics development.
 
 ## License
 
