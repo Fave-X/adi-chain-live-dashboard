@@ -157,7 +157,7 @@ The dashboard connects to:
 
 ## About
 
-Built by Tabugbo Chiagoziem Favour, a Laboratory Analyst turned on-chain data analyst.  This dashboard was created as a community resource for the ADI Chain ecosystem and as a practical showcase of Web3 analytics development.
+Built by FaveDigitals on-chain data analyst.  This dashboard was created as a community resource for the ADI Chain ecosystem and as a practical showcase of Web3 analytics development.
 
 ## License
 
